@@ -1,12 +1,12 @@
 
 @font-face {
     font-family: "font";
-    src: url("font.woff?t=1647176396127") format("woff")
+    src: url("font.woff?t=1647181398813") format("woff")
 }
 
 .Icon {
     font-family: 'font' !important;
-    font-size:16px;
+    font-size: initial;
     font-style:normal;
     display:inline-block;
     -webkit-font-smoothing: antialiased;
@@ -14,3 +14,4 @@
 }
 .IconArrowDown:before { content: "\ea01" }
 .IconEmail:before { content: "\ea02" }
+.IconTask:before { content: "\ea03" }

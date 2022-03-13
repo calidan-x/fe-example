@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'react/no-unused-prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': 'off',
     'no-use-before-define': 'off',
@@ -59,4 +60,4 @@ module.exports = {
       }
     }
   ]
-};
+}

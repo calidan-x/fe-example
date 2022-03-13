@@ -13,12 +13,12 @@ function generateCss(fontUnicode) {
   let cssContent = `
 @font-face {
     font-family: "${options.fontName}";
-    src: url("${options.fontName}.woff?t=1647176396127") format("woff")
+    src: url("${options.fontName}.woff?t=${Date.now()}") format("woff")
 }
 
 .Icon {
     font-family: '${options.fontName}' !important;
-    font-size:16px;
+    font-size: initial;
     font-style:normal;
     display:inline-block;
     -webkit-font-smoothing: antialiased;
@@ -35,16 +35,51 @@ function generateCss(fontUnicode) {
 
 function generateReact(fontUnicode) {
   let reactContent = `
+import { CSSProperties } from 'react';
+import './font.css'
+
 interface IconProps {
-    fontSize: string;
-    color: string;
+  className?: string;
+  fontSize?: string;
+  color?: string;
+  style?: CSSProperties;
 }
+
+const CommonIcon = (iconName: string) => ({ className, fontSize, color, style }: IconProps) => <i style={{ color, fontSize, ...style }} className={\`Icon $\{iconName} $\{className} \`} />
 `
 
   Object.keys(fontUnicode).forEach(key => {
-    reactContent += `export const ${key} = (props:IconProps) => <i style={props} className='Icon ${key}'/>\n`
+    reactContent += `export const ${key} = CommonIcon('${key}')\n`
   })
   fs.writeFileSync(options.dist + '/index.tsx', reactContent)
+}
+
+function generateShowHtml(fontUnicode) {
+  let showContent = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="font.css" />
+  </head>
+  <style>
+    *{
+      font-family: arial;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+  <body>
+`
+
+  Object.keys(fontUnicode).forEach(key => {
+    showContent += `<i class="Icon ${key}" ></i> &lt;${key} /&gt;<br>\n`
+  })
+
+  showContent += `
+    </body>
+  </html>  
+  `
+  fs.writeFileSync(options.dist + '/icon-show.html', showContent)
 }
 
 async function creatFont() {
@@ -53,6 +88,7 @@ async function creatFont() {
   await createWOFF(options, ttf) // TTF => WOFF
   generateCss(unicodeObject)
   generateReact(unicodeObject)
+  generateShowHtml(unicodeObject)
   fs.unlinkSync(`${options.dist}/${options.fontName}.ttf`)
   fs.unlinkSync(`${options.dist}/${options.fontName}.svg`)
 }

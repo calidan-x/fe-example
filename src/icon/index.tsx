@@ -1,7 +1,15 @@
 
+import { CSSProperties } from 'react';
+import './font.css'
+
 interface IconProps {
-    fontSize: string;
-    color: string;
+  className?: string;
+  fontSize?: string;
+  color?: string;
+  style?: CSSProperties;
 }
-export const IconArrowDown = (props:IconProps) => <i style={props} className='Icon IconArrowDown'/>
-export const IconEmail = (props:IconProps) => <i style={props} className='Icon IconEmail'/>
+
+const CommonIcon = (iconName: string) => ({ className, fontSize, color, style }: IconProps) => <i style={{ color, fontSize, ...style }} className={`Icon ${iconName} ${className} `} />
+export const IconArrowDown = CommonIcon('IconArrowDown')
+export const IconEmail = CommonIcon('IconEmail')
+export const IconTask = CommonIcon('IconTask')
