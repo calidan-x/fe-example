@@ -15,8 +15,13 @@ export const todoMockData = {
       content: '写代码'
     }
   ],
-  'GET /todos/:id': (): Todo => ({
-    id: 1,
-    content: '看电影'
-  })
+  'GET /todos/:id': ({ pathParams }: any): Todo => {
+    return {
+      id: pathParams.id,
+      content: '看电影'
+    }
+  },
+  'POST /todos': ({ pathParams, data }: any) => {
+    console.log('Post Data', data)
+  }
 }

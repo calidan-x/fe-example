@@ -4,20 +4,27 @@ import { todoApi, Todo } from '@/apis'
 
 import style from './todo-list.module.css'
 
-console.log(style)
-
 export const TodoList = () => {
   const [todos, setTodos] = useState<Todo[]>([])
 
-  useEffect(() => {
+  const refreshData = () => {
     todoApi.getList().then(res => {
       setTodos(res)
     })
+  }
 
-    todoApi.getTodo(1).then(res => {
+  useEffect(() => {
+    refreshData()
+    todoApi.getTodo(2).then(res => {
       console.log('id 1:', res)
     })
   }, [])
+
+  const addTodo = () => {
+    todoApi.addTodo({ id: 10, content: 'Hello' }).then(() => {
+      refreshData()
+    })
+  }
 
   return (
     <div className={style.title}>
@@ -27,6 +34,9 @@ export const TodoList = () => {
           {todo.content}
         </div>
       ))}
+      <button type="button" onClick={addTodo}>
+        添加
+      </button>
     </div>
   )
 }

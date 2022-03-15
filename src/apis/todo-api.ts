@@ -11,5 +11,8 @@ export const todoApi = {
   },
   getTodo(id: number) {
     return request.get<Todo>(`/todos/${id}`)
+  },
+  addTodo(todo: Todo) {
+    return request.post<Todo>(`/todos`, todo)
   }
 }
