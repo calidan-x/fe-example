@@ -15,8 +15,8 @@ export const TodoList = () => {
 
   useEffect(() => {
     refreshData()
-    todoApi.getTodo(2).then(res => {
-      console.log('id 1:', res)
+    todoApi.getTodo(1).then(res => {
+      console.log('id 3:', res)
     })
   }, [])
 

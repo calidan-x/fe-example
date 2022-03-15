@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: "font";
-    src: url("font.woff?t=1647181398813") format("woff")
+    src: url("font.woff?t=1647320653764") format("woff")
 }
 
 .Icon {
@@ -12,6 +12,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.IconArrowDown:before { content: "\ea01" }
-.IconEmail:before { content: "\ea02" }
-.IconTask:before { content: "\ea03" }
+.IconAddFile:before { content: "\ea01" }
+.IconArrowDown:before { content: "\ea02" }
+.IconEmail:before { content: "\ea03" }
+.IconTask:before { content: "\ea04" }

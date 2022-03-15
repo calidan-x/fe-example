@@ -10,6 +10,7 @@ interface IconProps {
 }
 
 const CommonIcon = (iconName: string) => ({ className, fontSize, color, style }: IconProps) => <i style={{ color, fontSize, ...style }} className={`Icon ${iconName} ${className} `} />
+export const IconAddFile = CommonIcon('IconAddFile')
 export const IconArrowDown = CommonIcon('IconArrowDown')
 export const IconEmail = CommonIcon('IconEmail')
 export const IconTask = CommonIcon('IconTask')
