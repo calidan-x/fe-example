@@ -24,5 +24,13 @@ export const request = {
       return mockReturn as Promise<T>
     }
     return axios.post<T>(envConfig.backendUrlBase + url, { data }).then(res => res.data)
+  },
+  put<T>(url: string, data?: any): Promise<T> {
+    const mockReturn = mockTool.processMockData('POST', url, data)
+    console.log('POST ' + envConfig.backendUrlBase + url)
+    if (mockReturn !== null) {
+      return mockReturn as Promise<T>
+    }
+    return axios.post<T>(envConfig.backendUrlBase + url, { data }).then(res => res.data)
   }
 }

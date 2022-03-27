@@ -50,7 +50,8 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'react/function-component-definition': 'off',
     'react/no-unstable-nested-components': 'off',
-    'class-methods-use-this': 'off'
+    'class-methods-use-this': 'off',
+    'react/button-has-type': 'off'
   },
   overrides: [
     {
