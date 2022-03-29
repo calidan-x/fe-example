@@ -50,7 +50,7 @@ export const ModalTest = () => {
         onClick={() => {
           Modal.show({
             title: '复杂弹框',
-            content: MyFrom()
+            content: <MyFrom />
           })
         }}
       >
