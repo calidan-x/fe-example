@@ -1,3 +1,6 @@
 export * from './todo-list/todo-list'
 export * from './login/login'
 export * from './modal-test/modal-test'
+export * from './input-test/input-test'
+export * from './switch-test/switch-test'
+export * from './tab-test/tab-test'

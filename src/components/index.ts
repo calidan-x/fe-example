@@ -1,3 +1,6 @@
 export * from './modal-box'
 export * from './modal'
 export * from './loading'
+export * from './input'
+export * from './switch'
+export * from './tab'

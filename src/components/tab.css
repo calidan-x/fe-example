@@ -1,0 +1,10 @@
+.tab-title{
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tab-title-active{
+  cursor: pointer;
+  display: inline-block;
+  border-bottom: 3px solid black;
+}
